@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript</title>
+</head>
+<body>
+    <button>Clique aqui!</button>
+
+    <p></p>
+    <p></p>
+
+    <input type="text">
+
+    <script>
+        const textos = document.querySelectorAll("p");
+
+        const input = document.querySelector("input");
+
+        input.addEventListener("keyup", () =>{
+            let textoDigitado = input.value;
+
+            if(textoDigitado == "Calabresa"){
+                textos[1].innerText = "Um sabor clássico";
+            } else if(textoDigitado == "Frango com catupiry"){
+                textos[1].innerText = "Um sabor que divide opiniões";
+            } else {
+                textos[1].innerText = "Seu gosto é peculiar";
+            }
+        });
+
+        
+    </script>
+</body>
+</html>
