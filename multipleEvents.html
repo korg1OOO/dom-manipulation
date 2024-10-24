@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript</title>
+</head>
+<body>
+    <img src="https://static.wikia.nocookie.net/gravityfalls/images/9/99/31i29vG.jpg/revision/latest?cb=20151028211850&path-prefix=pt" />
+    <p></p>
+    
+    <script>
+        const foto = document.querySelector("img")
+        const nome = document.querySelector("p");
+
+        foto.addEventListener("mouseenter", () =>{
+            nome.innerText = "Oink!";
+        });
+
+        foto.addEventListener("mouseleave", () =>{
+            nome.innerText = "Ei! Eu ainda quero carinho!";
+        });
+
+        foto.addEventListener("mousemove", () =>{
+            nome.innerText = "Obaaa! Carinho!";
+        });
+
+        foto.addEventListener("click", () =>{
+            nome.innerText = "Oink! Faz cócegas!";
+        });
+        
+    </script>
+</body>
+</html>
