@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript</title>
+</head>
+<body>
+    <input type="button" id="input" value="Receba um nome">
+    <p id="nome"></p>
+
+    <script>
+        const botao = document.querySelector("input")
+        const nome = document.querySelector("p");
+
+        const titles = ["Sr.", "Mister", "Dom", "Lord", "Lady", "Capitão", "Dama"];
+        const names = ["Arthur", "Gwendolyn", "Merlin", "Lancelot", "Morgana", "Ragnar", "Éowyn"];
+        const classes = ["Mago", "Paladino", "Arqueiro", "Ladino", "Bárbaro", "Feiticeiro", "Cavaleiro"];
+        const locations = ["Valfenda", "Gondor", "Asgard", "Camelot", "Nárnia", "Babilônia", "Atlantis"];
+
+        botao.addEventListener("click", () =>{
+            const nomeGerado = titles[Math.floor(Math.random() * titles.length)] + " " + names[Math.floor(Math.random() * names.length)] + " " + classes[Math.floor(Math.random() * classes.length)] + " " + locations[Math.floor(Math.random() * locations.length)];
+            nome.innerText = nomeGerado;
+        });
+            
+        
+    </script>
+</body>
+</html>
