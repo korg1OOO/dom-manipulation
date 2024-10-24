@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript</title>
+</head>
+<body>
+    
+    <p></p>
+    <p></p>
+
+    <input type="text">
+    <button type="button">Modo Escuro</button>
+
+    <script>
+        const textos = document.querySelectorAll("p");
+        const input = document.querySelector("input");
+        const botao = document.querySelector("button");
+
+        input.addEventListener("keyup", () =>{
+            let textoDigitado = input.value;
+
+            if(textoDigitado.length >= 3){
+                if(textoDigitado == "chocolate"){
+                    textos[1].innerText = "Eu amo sorvete de chocolate!";
+                } else if (textoDigitado == "flocos"){
+                    textos[1].innerText = "Ahh, mas chocolate é o meu favorito...";
+                } else {
+                    textos[1].innerText = "Ahh, eu esperava um sabor de sorvete...";
+                }
+            }
+        });
+
+        botao.addEventListener("click", () =>{
+            if(document.body.style.backgroundColor == "black"){
+                document.body.style.backgroundColor = "white";
+                document.body.style.color = "black";
+            } else {
+                document.body.style.backgroundColor = "black";
+                document.body.style.color = "white";
+            }
+            
+        });
+        
+    </script>
+</body>
+</html>
