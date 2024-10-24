@@ -20,15 +20,16 @@
         input.addEventListener("keyup", () =>{
             let textoDigitado = input.value;
 
-            if(textoDigitado == "Calabresa"){
-                textos[1].innerText = "Um sabor clássico";
-            } else if(textoDigitado == "Frango com catupiry"){
-                textos[1].innerText = "Um sabor que divide opiniões";
-            } else {
-                textos[1].innerText = "Seu gosto é peculiar";
+            if(textoDigitado.length >= 3){
+                if(textoDigitado == "chocolate"){
+                    textos[1].innerText = "Eu amo sorvete de chocolate!";
+                } else if (textoDigitado == "flocos"){
+                    textos[1].innerText = "Ahh, mas chocolate é o meu favorito...";
+                } else {
+                    textos[1].innerText = "Ahh, eu esperava um sabor de sorvete...";
+                }
             }
         });
-
         
     </script>
 </body>
