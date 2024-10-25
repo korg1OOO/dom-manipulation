@@ -1,26 +1,112 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Javascript</title>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Cadastro</title>
+   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    
-    <form onsubmit="return validateForm()">
+    <form onsubmit="validarFormulario(event)">
+
         <h3>Cadastre-se</h3>
 
-        <div class="form-group">
            <label for="nome">Nome:</label>
-           <input type="text" id="nome" name="nome" placeholder="nome" required minlength="3">
-        </div>
+           <input type="text" id="nome" name="nome" placeholder="nome completo…">
+           <span class="erro" id="erroNome"></span>
+
+        <p></p>
+
+        <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="email">
+            <span class="erro" id="erroEmail"></span>
+            
+         <p></p>
+
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha" placeholder="senha">
+            <input type="button" id="verSenha">
+            <span class="erro" id="erroSenha"></span>
+
+         <p></p>
+
+            <label for="senha">Confirmação de Senha:</label>
+            <input type="password" id="repetirSenha" name="senha" placeholder="repita a senha">
+            <input type="button" id="verSenhaRepetida">
+            <span class="erro" id="erroSenhaDiferente"></span>
+
+         <p></p>
+
+            <button type="submit">Enviar</button>
+            <span class="enviarComSucesso" id="enviarComSucesso"></span>
 
     </form>
 
     <script>
-        function validateForm(){
-            
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        const senhaRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+
+        function validarFormulario(event){
+            event.preventDefault();
+
+            const enviar = document.getElementById("enviarComSucesso");
+            enviar.textContent = "";
+            const nome = document.getElementById("nome").value;
+            const erroNome = document.getElementById("erroNome");
+
+            if(nome.length < 3){
+                erroNome.textContent = "O nome deve ter mais de 3 caracteres.";
+                return false;
+            } else {
+                erroNome.textContent = "";
+            }
+
+            const email = document.getElementById("email").value;
+            const erroEmail = document.getElementById("erroEmail");
+
+            if(!emailRegex.test(email)){
+                erroEmail.textContent = "E-mail não está de acordo com as normas.";
+                return false;
+            } else {
+                erroEmail.textContent = "";
+            }
+
+            const senha = document.getElementById("senha").value;
+            const repetirSenha = document.getElementById("repetirSenha").value;
+            const erroSenha = document.getElementById("erroSenha");
+            const erroSenhaDiferente = document.getElementById("erroSenhaDiferente");
+
+            if(!senhaRegex.test(senha)){
+                erroSenha.textContent = "Sua senha deve conter pelo menos uma letra maiúscula, um número e um caractere especial.";
+                return false;
+            } else {
+                erroSenha.textContent = "";
+            }
+
+            if(senha != repetirSenha){
+                erroSenhaDiferente.textContent = "Sua senha e a confirmação devem ser idênticas.";
+                return false;
+            } else {
+                erroSenhaDiferente.textContent = "";
+            }
+
+            enviar.textContent = "Formulário enviado com sucesso!";
+            return true;
         }
+
+        document.getElementById("verSenha").addEventListener("click", ()=> {
+            const senhaInput = document.getElementById("senha");
+            const tipo = senhaInput.getAttribute("type") == "password" ? "text" : "password";
+            senhaInput.setAttribute("type", tipo);
+        });
+
+        document.getElementById("verSenhaRepetida").addEventListener("click", ()=> {
+            const repetirSenhaInput = document.getElementById("repetirSenha");
+            const tipo = repetirSenhaInput.getAttribute("type") == "password" ? "text" : "password";
+            repetirSenhaInput.setAttribute("type", tipo);
+        });
+
     </script>
 </body>
 </html>
